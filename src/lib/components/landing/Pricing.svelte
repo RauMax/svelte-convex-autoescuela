@@ -56,13 +56,13 @@
     },
   ];
 
-  // Lógica de Svelte 5: Estado derivado para el precio anual
-  const calculatePrice = (monthlyPrice: number) => {
-    if (isAnnual) {
-      return Math.floor(monthlyPrice * 0.8); // 20% de descuento
-    }
-    return monthlyPrice;
-  };
+  // $derived recalcula el array automáticamente cuando isAnnual cambia
+  const displayPlans = $derived(
+    plans.map((p) => ({
+      ...p,
+      displayPrice: isAnnual ? Math.floor(p.price * 0.8) : p.price,
+    })),
+  );
 </script>
 
 <section id="pricing" class="py-24 bg-white">
@@ -106,7 +106,7 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {#each plans as plan (plan.name)}
+      {#each displayPlans as plan (plan.name)}
         <Card.Root
           class="relative flex flex-col {plan.popular
             ? 'border-sky-500 border-2 shadow-2xl scale-105 z-10'
@@ -132,11 +132,11 @@
             >
             <div
               class="flex items-baseline gap-1"
-              aria-label="Precio: {calculatePrice(plan.price)} euros al mes"
+              aria-label="Precio: {plan.displayPrice} euros al mes"
             >
               <span
                 class="text-5xl font-black text-slate-900"
-                aria-hidden="true">€{calculatePrice(plan.price)}</span
+                aria-hidden="true">€{plan.displayPrice}</span
               >
               <span class="text-slate-500 font-medium" aria-hidden="true"
                 >/mes</span

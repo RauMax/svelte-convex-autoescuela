@@ -100,10 +100,10 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {#each features as feature, i (feature.title)}
         <div
-          class="transition-all duration-700 opacity-0 translate-y-12"
-          style="transition-delay: {i * 100}ms; opacity: {isVisible
-            ? 1
-            : 0}; transform: {isVisible ? 'translateY(0)' : 'translateY(3rem)'}"
+          class="transition-all duration-700 {isVisible
+            ? 'opacity-100 translate-y-0'
+            : 'opacity-0 translate-y-12'}"
+          style:transition-delay="{i * 100}ms"
         >
           <Card.Root
             class="group h-full border-none shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-white overflow-hidden"

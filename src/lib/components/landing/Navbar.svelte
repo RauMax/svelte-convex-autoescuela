@@ -6,6 +6,7 @@
 
   let isOpen = $state(false);
   let activeSection = $state("");
+  let scrolled = $state(false);
 
   interface NavLink {
     name: string;
@@ -40,12 +41,22 @@
       if (element) observer.observe(element);
     });
 
-    return () => observer.disconnect();
+    const onScroll = () => {
+      scrolled = window.scrollY > 10;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", onScroll);
+    };
   });
 </script>
 
 <nav
-  class="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-slate-100"
+  class="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-slate-100 transition-shadow duration-300 {scrolled
+    ? 'shadow-md'
+    : ''}"
 >
   <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
     <!-- Logo -->

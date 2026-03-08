@@ -26,19 +26,19 @@
     {
       title: "Plataforma",
       links: [
-        { name: "Funcionalidades", href: "/" },
-        { name: "Precios", href: "/" },
-        { name: "Testimonios", href: "/" },
-        { name: "Seguridad", href: "/" },
+        { name: "Funcionalidades", href: "#features" },
+        { name: "Precios", href: "#pricing" },
+        { name: "Testimonios", href: "#about" },
+        { name: "Seguridad", href: "#contact" },
       ],
     },
     {
       title: "Compañía",
       links: [
-        { name: "Sobre nosotros", href: "/" },
-        { name: "Nuestro blog", href: "/" },
-        { name: "Carreras", href: "/" },
-        { name: "Prensa", href: "/" },
+        { name: "Sobre nosotros", href: "#about" },
+        { name: "Nuestro blog", href: "#about" },
+        { name: "Carreras", href: "#contact" },
+        { name: "Prensa", href: "#contact" },
       ],
     },
   ];
