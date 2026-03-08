@@ -6,10 +6,20 @@
     ShieldCheck,
     Smartphone,
     BarChart3,
+    type Icon,
   } from "@lucide/svelte";
   import * as Card from "$lib/components/ui/card";
+  import type { Component } from "svelte";
 
-  const features = [
+  // Definimos la estructura de una funcionalidad para mayor seguridad
+  interface Feature {
+    title: string;
+    desc: string;
+    icon: Component<any>;
+    color: string;
+  }
+
+  const features: Feature[] = [
     {
       title: "Gestión de Alumnos",
       desc: "Expedientes digitales, seguimiento de progreso y documentación organizada.",
@@ -62,13 +72,14 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {#each features as feature}
+      {#each features as feature (feature.title)}
         <Card.Root
           class="group border-none shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-white overflow-hidden"
         >
           <Card.Header class="p-8">
             <div
               class="w-14 h-14 rounded-2xl {feature.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+              aria-hidden="true"
             >
               <feature.icon size={28} />
             </div>
