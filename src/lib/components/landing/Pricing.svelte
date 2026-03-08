@@ -166,6 +166,7 @@
                 ? 'bg-sky-600 hover:bg-sky-700 shadow-lg shadow-sky-100'
                 : 'bg-slate-900 hover:bg-slate-800'}"
               aria-label="Seleccionar plan {plan.name}"
+              href="/register?plan={plan.name.toLowerCase()}"
             >
               Seleccionar Plan
             </Button>

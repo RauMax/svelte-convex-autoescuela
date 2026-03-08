@@ -2,8 +2,10 @@
   import { Menu, X } from "@lucide/svelte";
   import { Button } from "$lib/components/ui/button";
   import Separator from "$lib/components/ui/separator/separator.svelte";
+  import { onMount } from "svelte";
 
   let isOpen = $state(false);
+  let activeSection = $state("");
 
   interface NavLink {
     name: string;
@@ -16,6 +18,30 @@
     { name: "Precios", href: "#pricing" },
     { name: "Contacto", href: "#contact" },
   ];
+
+  onMount(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: "-20% 0px -70% 0px",
+      threshold: 0,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          activeSection = entry.target.id;
+        }
+      });
+    }, observerOptions);
+
+    navLinks.forEach((link) => {
+      const id = link.href.replace("#", "");
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  });
 </script>
 
 <nav
@@ -44,7 +70,10 @@
       {#each navLinks as link (link.name)}
         <a
           href={link.href}
-          class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-sky-600 transition-colors rounded-md hover:bg-slate-50"
+          class="px-4 py-2 text-sm font-medium transition-colors rounded-md hover:bg-slate-50 {activeSection ===
+          link.href.replace('#', '')
+            ? 'text-sky-600 bg-sky-50/50'
+            : 'text-slate-600 hover:text-sky-600'}"
         >
           {link.name}
         </a>
@@ -84,7 +113,10 @@
       {#each navLinks as link (link.name)}
         <a
           href={link.href}
-          class="px-4 py-3 text-lg font-medium text-slate-600 hover:bg-slate-50 rounded-lg"
+          class="px-4 py-3 text-lg font-medium rounded-lg transition-colors {activeSection ===
+          link.href.replace('#', '')
+            ? 'text-sky-600 bg-sky-50'
+            : 'text-slate-600 hover:bg-slate-50'}"
           onclick={() => (isOpen = false)}
         >
           {link.name}

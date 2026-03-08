@@ -12,6 +12,7 @@
 </script>
 
 <section
+  id="about"
   class="relative pt-20 pb-24 md:pt-32 md:pb-40 overflow-hidden bg-white"
 >
   <!-- Background Decorations -->
@@ -68,6 +69,7 @@
           size="lg"
           class="w-full sm:w-auto px-8 py-7 text-lg bg-sky-600 hover:bg-sky-700 shadow-xl shadow-sky-200 transition-all hover:-translate-y-1"
           aria-label="Empezar registro gratuito"
+          href="/register"
         >
           Empezar Ahora Gratis
           <ArrowRight class="ml-2 w-5 h-5" aria-hidden="true" />
@@ -77,6 +79,7 @@
           variant="outline"
           class="w-full sm:w-auto px-8 py-7 text-lg border-2 hover:bg-slate-50 transition-all"
           aria-label="Ver video demostración de la plataforma"
+          href="#demo"
         >
           <Play class="mr-2 w-5 h-5 fill-slate-900" aria-hidden="true" />
           Ver Video Demo
@@ -112,12 +115,15 @@
         class="relative bg-white rounded-4xl border border-slate-200 overflow-hidden shadow-2xl"
       >
         <div
+          id="demo"
           class="aspect-video bg-slate-900 flex items-center justify-center relative"
         >
           <img
             src="https://images.unsplash.com/photo-1596484552979-3300f43963ba?auto=format&fit=crop&q=80&w=1200"
             alt="Dashboard de la plataforma AutoEscuelaPro"
             class="w-full h-full object-cover opacity-80"
+            loading="eager"
+            fetchpriority="high"
           />
           <div
             class="absolute inset-0 bg-linear-to-t from-slate-900/60 to-transparent"

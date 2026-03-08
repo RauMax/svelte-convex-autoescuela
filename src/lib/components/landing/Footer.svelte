@@ -146,7 +146,14 @@
           >
             <MapPin size={18} />
           </div>
-          <p>Madrid, España</p>
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Madrid+España"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-sky-500 transition-colors"
+          >
+            Madrid, España
+          </a>
         </div>
       </div>
     </div>

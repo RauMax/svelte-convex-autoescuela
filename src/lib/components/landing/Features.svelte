@@ -9,7 +9,7 @@
     type Icon,
   } from "@lucide/svelte";
   import * as Card from "$lib/components/ui/card";
-  import type { Component } from "svelte";
+  import { onMount, type Component } from "svelte";
 
   // Definimos la estructura de una funcionalidad para mayor seguridad
   interface Feature {
@@ -57,11 +57,37 @@
       color: "bg-sky-50 text-sky-600",
     },
   ];
+
+  let isVisible = $state(false);
+  let sectionRef = $state<HTMLElement | null>(null);
+
+  onMount(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          isVisible = true;
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 },
+    );
+
+    if (sectionRef) observer.observe(sectionRef);
+    return () => observer.disconnect();
+  });
 </script>
 
-<section id="features" class="py-24 bg-slate-50/50">
+<section
+  id="features"
+  class="py-24 bg-slate-50/50 overflow-hidden"
+  bind:this={sectionRef}
+>
   <div class="max-w-7xl mx-auto px-6">
-    <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+    <div
+      class="text-center max-w-3xl mx-auto mb-16 space-y-4 transition-all duration-1000 {isVisible
+        ? 'opacity-100 translate-y-0'
+        : 'opacity-0 translate-y-10'}"
+    >
       <h2 class="text-sky-600 font-bold tracking-wider uppercase text-sm">
         Funcionalidades
       </h2>
@@ -72,30 +98,39 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {#each features as feature (feature.title)}
-        <Card.Root
-          class="group border-none shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-white overflow-hidden"
+      {#each features as feature, i (feature.title)}
+        <div
+          class="transition-all duration-700 opacity-0 translate-y-12"
+          style="transition-delay: {i * 100}ms; opacity: {isVisible
+            ? 1
+            : 0}; transform: {isVisible ? 'translateY(0)' : 'translateY(3rem)'}"
         >
-          <Card.Header class="p-8">
+          <Card.Root
+            class="group h-full border-none shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-white overflow-hidden"
+          >
+            <Card.Header class="p-8">
+              <div
+                class="w-14 h-14 rounded-2xl {feature.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+                aria-hidden="true"
+              >
+                <feature.icon size={28} />
+              </div>
+              <Card.Title
+                class="text-xl font-bold mb-3 text-slate-900 group-hover:text-sky-600 transition-colors"
+              >
+                {feature.title}
+              </Card.Title>
+              <Card.Description
+                class="text-base text-slate-500 leading-relaxed"
+              >
+                {feature.desc}
+              </Card.Description>
+            </Card.Header>
             <div
-              class="w-14 h-14 rounded-2xl {feature.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
-              aria-hidden="true"
-            >
-              <feature.icon size={28} />
-            </div>
-            <Card.Title
-              class="text-xl font-bold mb-3 text-slate-900 group-hover:text-sky-600 transition-colors"
-            >
-              {feature.title}
-            </Card.Title>
-            <Card.Description class="text-base text-slate-500 leading-relaxed">
-              {feature.desc}
-            </Card.Description>
-          </Card.Header>
-          <div
-            class="h-1 w-0 bg-sky-600 group-hover:w-full transition-all duration-500"
-          ></div>
-        </Card.Root>
+              class="h-1 w-0 bg-sky-600 group-hover:w-full transition-all duration-500"
+            ></div>
+          </Card.Root>
+        </div>
       {/each}
     </div>
   </div>
