@@ -30,19 +30,19 @@
         </p>
         <div class="flex gap-4">
           <a
-            href="#"
+            href="/"
             class="p-2 bg-slate-800 rounded-lg hover:bg-sky-600 hover:text-white transition-all"
           >
             <Facebook size={20} />
           </a>
           <a
-            href="#"
+            href="/"
             class="p-2 bg-slate-800 rounded-lg hover:bg-sky-600 hover:text-white transition-all"
           >
             <Instagram size={20} />
           </a>
           <a
-            href="#"
+            href="/"
             class="p-2 bg-slate-800 rounded-lg hover:bg-sky-600 hover:text-white transition-all"
           >
             <Twitter size={20} />
@@ -54,20 +54,20 @@
         <h4 class="text-white font-bold text-lg mb-6">Plataforma</h4>
         <ul class="space-y-4">
           <li>
-            <a href="#" class="hover:text-sky-500 transition-colors"
+            <a href="/" class="hover:text-sky-500 transition-colors"
               >Funcionalidades</a
             >
           </li>
           <li>
-            <a href="#" class="hover:text-sky-500 transition-colors">Precios</a>
+            <a href="/" class="hover:text-sky-500 transition-colors">Precios</a>
           </li>
           <li>
-            <a href="#" class="hover:text-sky-500 transition-colors"
+            <a href="/" class="hover:text-sky-500 transition-colors"
               >Testimonios</a
             >
           </li>
           <li>
-            <a href="#" class="hover:text-sky-500 transition-colors"
+            <a href="/" class="hover:text-sky-500 transition-colors"
               >Seguridad</a
             >
           </li>
@@ -78,21 +78,21 @@
         <h4 class="text-white font-bold text-lg mb-6">Compañía</h4>
         <ul class="space-y-4">
           <li>
-            <a href="#" class="hover:text-sky-500 transition-colors"
+            <a href="/" class="hover:text-sky-500 transition-colors"
               >Sobre nosotros</a
             >
           </li>
           <li>
-            <a href="#" class="hover:text-sky-500 transition-colors"
+            <a href="/" class="hover:text-sky-500 transition-colors"
               >Nuestro blog</a
             >
           </li>
           <li>
-            <a href="#" class="hover:text-sky-500 transition-colors">Carreras</a
+            <a href="/" class="hover:text-sky-500 transition-colors">Carreras</a
             >
           </li>
           <li>
-            <a href="#" class="hover:text-sky-500 transition-colors">Prensa</a>
+            <a href="/" class="hover:text-sky-500 transition-colors">Prensa</a>
           </li>
         </ul>
       </div>
@@ -131,9 +131,9 @@
     >
       <p>© 2026 AutoEscuelaPro S.L. Todos los derechos reservados.</p>
       <div class="flex gap-8">
-        <a href="#" class="hover:text-white transition-colors">Privacidad</a>
-        <a href="#" class="hover:text-white transition-colors">Términos</a>
-        <a href="#" class="hover:text-white transition-colors">Cookies</a>
+        <a href="/" class="hover:text-white transition-colors">Privacidad</a>
+        <a href="/" class="hover:text-white transition-colors">Términos</a>
+        <a href="/" class="hover:text-white transition-colors">Cookies</a>
       </div>
     </div>
   </div>

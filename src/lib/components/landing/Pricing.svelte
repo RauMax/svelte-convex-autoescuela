@@ -127,7 +127,7 @@
             </div>
           </Card.Header>
 
-          <Card.Content class="p-8 pt-0 flex-grow">
+          <Card.Content class="p-8 pt-0 grow">
             <div class="space-y-4">
               {#each plan.features as feature}
                 <div class="flex items-center gap-3">
