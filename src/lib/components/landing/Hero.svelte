@@ -46,7 +46,7 @@
       </div>
 
       <h1
-        class="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] tracking-tight"
+        class="text-5xl md:text-7xl font-black text-slate-900 leading-tight tracking-tight"
       >
         Aprende a conducir <br />
         <span
@@ -166,7 +166,7 @@
           </div>
           <div class="text-right">
             <p class="text-sm font-black text-slate-900">95%</p>
-            <p class="text-[10px] text-slate-500 font-medium">Tasa de éxito</p>
+            <p class="text-xs text-slate-500 font-medium">Tasa de éxito</p>
           </div>
         </div>
       </div>

@@ -6,7 +6,6 @@
     ShieldCheck,
     Smartphone,
     BarChart3,
-    type Icon,
   } from "@lucide/svelte";
   import * as Card from "$lib/components/ui/card";
   import { onMount, type Component } from "svelte";
